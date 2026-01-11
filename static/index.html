@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇 - 登录</title>
+    <meta name="description" content="经典贪吃蛇网页游戏，登录开始游戏，挑战最高分！">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <div class="logo-icon">🐍</div>
+                <h1>贪吃蛇</h1>
+                <p>登录开始游戏，挑战最高分！</p>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">登录</button>
+                <button class="tab-btn" onclick="switchTab('register')">注册</button>
+            </div>
+            
+            <div id="message" class="message"></div>
+            
+            <!-- Login Form -->
+            <div id="loginPanel" class="form-panel active">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginUsername">用户名</label>
+                        <input type="text" id="loginUsername" placeholder="请输入用户名" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">密码</label>
+                        <input type="password" id="loginPassword" placeholder="请输入密码" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn" id="loginBtn">登录</button>
+                </form>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerPanel" class="form-panel">
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="registerUsername">用户名</label>
+                        <input type="text" id="registerUsername" placeholder="请输入用户名" required minlength="3" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">密码</label>
+                        <input type="password" id="registerPassword" placeholder="请输入密码（至少6位）" required minlength="6" autocomplete="new-password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">确认密码</label>
+                        <input type="password" id="confirmPassword" placeholder="请再次输入密码" required autocomplete="new-password">
+                    </div>
+                    <button type="submit" class="btn" id="registerBtn">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>

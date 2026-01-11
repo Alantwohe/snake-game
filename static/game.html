@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>贪吃蛇 - 游戏</title>
+      <meta name="description" content="贪吃蛇网页游戏 - 使用方向键控制蛇移动，吃到食物得分！">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+      <div class="bg-animation"></div>
+
+      <div class="container">
+            <div class="game-container">
+                  <!-- Header -->
+                  <div class="game-header">
+                        <div class="game-title">🐍 贪吃蛇</div>
+                        <div class="user-info">
+                              <span class="username" id="usernameDisplay">游客</span>
+                              <button class="logout-btn" onclick="logout()">退出</button>
+                        </div>
+                  </div>
+
+                  <!-- Stats -->
+                  <div class="game-stats">
+                        <div class="stat-card">
+                              <div class="stat-label">当前分数</div>
+                              <div class="stat-value" id="currentScore">0</div>
+                        </div>
+                        <div class="stat-card">
+                              <div class="stat-label">最高分数</div>
+                              <div class="stat-value" id="highScore">0</div>
+                        </div>
+                        <div class="stat-card">
+                              <div class="stat-label">游戏时间</div>
+                              <div class="stat-value" id="gameTime">0:00</div>
+                        </div>
+                  </div>
+
+                  <!-- Game Board -->
+                  <div class="game-board">
+                        <canvas id="gameCanvas" width="400" height="400"></canvas>
+                  </div>
+
+                  <!-- Controls -->
+                  <div class="game-controls">
+                        <button class="control-btn" id="startBtn" onclick="startGame()">开始游戏</button>
+                        <button class="control-btn secondary" onclick="pauseGame()">暂停</button>
+                        <button class="control-btn secondary" id="soundBtn" onclick="toggleSound()">🔊 声音</button>
+                  </div>
+
+                  <!-- Mobile Controls -->
+                  <div class="mobile-controls">
+                        <div class="dpad">
+                              <button class="dpad-btn up" onclick="changeDirection('up')">↑</button>
+                              <button class="dpad-btn left" onclick="changeDirection('left')">←</button>
+                              <button class="dpad-btn right" onclick="changeDirection('right')">→</button>
+                              <button class="dpad-btn down" onclick="changeDirection('down')">↓</button>
+                        </div>
+                  </div>
+
+                  <!-- Leaderboard -->
+                  <div class="leaderboard">
+                        <h3>🏆 排行榜</h3>
+                        <ul class="leaderboard-list" id="leaderboardList">
+                              <li class="leaderboard-item">
+                                    <span class="rank">-</span>
+                                    <span class="player-name">暂无数据</span>
+                                    <span class="player-score">-</span>
+                              </li>
+                        </ul>
+                  </div>
+            </div>
+      </div>
+
+      <!-- Game Over Modal -->
+      <div class="modal-overlay" id="gameOverModal">
+            <div class="modal">
+                  <div class="modal-icon">🎮</div>
+                  <h2>游戏结束</h2>
+                  <div class="score-display" id="finalScore">0</div>
+                  <p>恭喜你获得了 <span id="finalScoreText">0</span> 分！</p>
+                  <div class="modal-buttons">
+                        <button class="control-btn" onclick="restartGame()">再玩一次</button>
+                        <button class="control-btn secondary" onclick="closeModal()">返回</button>
+                  </div>
+            </div>
+      </div>
+
+      <script src="/static/js/sound.js"></script>
+      <script src="/static/js/game.js"></script>
+</body>
+
+</html>
